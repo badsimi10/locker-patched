@@ -1,7 +1,4 @@
 FROM php:8.3-cli
-
-# The php:8.3-cli base image does not ship the SQLite dev headers, so building
-# the pdo_sqlite extension fails without libsqlite3-dev. Install it first.
 RUN apt-get update \
  && apt-get install -y --no-install-recommends libsqlite3-dev \
  && docker-php-ext-install pdo_sqlite \
