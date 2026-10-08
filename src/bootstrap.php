@@ -1,10 +1,5 @@
 <?php
 declare(strict_types=1);
-
-// Harden the session cookie: not readable from JavaScript, not sent on
-// cross-site requests, and marked Secure when the request arrived over HTTPS
-// (Render terminates TLS and forwards the scheme). Secure is gated on the
-// scheme so local plain-HTTP sign-in is not broken.
 $https = ($_SERVER["HTTPS"] ?? "") === "on"
     || ($_SERVER["HTTP_X_FORWARDED_PROTO"] ?? "") === "https";
 session_set_cookie_params([
